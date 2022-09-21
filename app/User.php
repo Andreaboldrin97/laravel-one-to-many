@@ -8,6 +8,10 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+    protected function users()
+    {
+        return $this->belongsTo('App\Models\Post');
+    }
     use Notifiable;
 
     /**
