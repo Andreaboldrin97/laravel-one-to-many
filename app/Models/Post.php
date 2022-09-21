@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    protected function posts()
+    public function user()
     {
-        return $this->hasMany('App\User');
+        return $this->belongsTo('App\User');
     }
     protected $fillable = array('title', 'description', 'image_url', 'user_id', 'sale_date');
 }
