@@ -52,7 +52,7 @@ class PostController extends Controller
         $data = $request->all();
 
         $newPost = new Post();
-        $data['author'] = Auth::user()->name;
+        $data['user_id'] = Auth::id();
         $data['sale_date'] = new DateTime();
         $newPost->create($data);
         return redirect()->route('admin.post.index')->with('create', $data['title']);
@@ -95,7 +95,7 @@ class PostController extends Controller
     {
         $validationData = $request->validate($this->validationRoule);
         $post = Post::findOrFail($id);
-        $data['author'] = $post->author;
+        $data['user_id'] = Auth::id();
         $data['sale_date'] = $post->sale_date;
         $data = $request->all();
         $post->update($data);
