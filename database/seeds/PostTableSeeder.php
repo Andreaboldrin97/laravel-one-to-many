@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Category;
 use App\Models\Post;
 use App\User;
 use Illuminate\Database\Seeder;
@@ -16,8 +17,11 @@ class PostTableSeeder extends Seeder
     public function run(Faker $faker)
     {
         $user = User::all();
+        $category = Category::all();
+
         for ($i = 1; $i <= 20; $i++) {
             $newPost = new Post();
+            $newPost->category_id = $faker->randomElement($category)->id;
             $newPost->user_id = $faker->randomElement($user)->id;
             $newPost->title = $faker->realText(35);
             $newPost->description = $faker->paragraph(3, true);

@@ -20,6 +20,7 @@
                 <th>AUTHOR</th>
                 <th>TITLE</th>
                 <th>DESCRIPTION</th>
+                <th>CATEGORY</th>
                 <th></th>
                 <th></th>
             </thead>
@@ -35,12 +36,18 @@
                         </td>
                         <td>{{ $post->description }}</td>
                         <td>
+                            <span class="badge badge-fill p-2" style="background-color:{{ $post->category->color }}">
+                                {{ $post->category->name }}
+                            </span>
+                        </td>
+                        <td>
                             <a class="btn btn-success" href="{{ route('admin.post.edit', $post->id) }}">
                                 Edit
                             </a>
                         </td>
                         <td>
-                            <form action="{{ route('admin.post.destroy', $post->id) }}" class="delete-method" method="POST">
+                            <form action="{{ route('admin.post.destroy', $post->id) }}" class="delete-method"
+                                method="POST">
                                 @csrf
                                 @method('DELETE')
 

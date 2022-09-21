@@ -10,5 +10,9 @@ class Post extends Model
     {
         return $this->belongsTo('App\User');
     }
-    protected $fillable = array('title', 'description', 'image_url', 'user_id', 'sale_date');
+    public function category()
+    {
+        return $this->belongsTo('App\Models\Category');
+    }
+    protected $fillable = array('title', 'description', 'image_url', 'user_id', 'sale_date', 'category_id');
 }
