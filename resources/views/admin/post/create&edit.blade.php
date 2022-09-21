@@ -28,6 +28,20 @@
         </textarea>
         </div>
         <div class="mb-3">
+            <label for="category" class="form-label text-white">CATEGORY</label>
+            <select id="input-category" class="form-control" name="category_id">
+                <option value="">NO CATEGORY</option>
+                @foreach ($categoris as $category)
+                    <option value="{{ old('category', $category->id) }}"
+                        @isset($post->category)
+                                {{ $category->id === $post->category->id ? 'selected' : '' }}
+                            @endisset>
+                        {{ old('category', $category->name) }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+        <div class="mb-3">
             <label for="image_url" class="form-label text-white">IMAGE_URL</label>
             @error('image_url')
                 <p class="text-danger fs-6">

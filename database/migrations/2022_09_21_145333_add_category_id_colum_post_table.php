@@ -14,7 +14,7 @@
         public function up()
         {
             Schema::table('posts', function (Blueprint $table) {
-                $table->unsignedBigInteger('category_id')->after('user_id');
+                $table->unsignedBigInteger('category_id')->after('user_id')->nullable();
 
                 $table->foreign('category_id')
                     ->references('id')

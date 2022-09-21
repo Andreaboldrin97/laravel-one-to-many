@@ -36,9 +36,13 @@
                         </td>
                         <td>{{ $post->description }}</td>
                         <td>
-                            <span class="badge badge-fill p-2" style="background-color:{{ $post->category->color }}">
+                            <span class="badge badge-fill p-2"
+                                @if (isset($post->category)) style="background-color:{{ $post->category->color }}">
                                 {{ $post->category->name }}
-                            </span>
+                                @else
+                                style="background-color:red">
+                                ------- @endif
+                                </span>
                         </td>
                         <td>
                             <a class="btn btn-success" href="{{ route('admin.post.edit', $post->id) }}">
@@ -46,8 +50,7 @@
                             </a>
                         </td>
                         <td>
-                            <form action="{{ route('admin.post.destroy', $post->id) }}" class="delete-method"
-                                method="POST">
+                            <form action="{{ route('admin.post.destroy', $post->id) }}" class="delete-method" method="POST">
                                 @csrf
                                 @method('DELETE')
 

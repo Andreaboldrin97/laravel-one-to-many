@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Post;
 use DateTime;
 use Illuminate\Http\Request;
@@ -34,10 +35,11 @@ class PostController extends Controller
      */
     public function create()
     {
+        $categoris = Category::all();
         $post = new Post();
         $route = route('admin.post.store');
         $method = 'POST';
-        return view('admin.post.create&edit', compact(['post', 'route', 'method']));
+        return view('admin.post.create&edit', compact(['post', 'route', 'method', 'categoris']));
     }
 
     /**
@@ -78,10 +80,11 @@ class PostController extends Controller
      */
     public function edit($id)
     {
+        $categoris = Category::all();
         $post = Post::findOrFail($id);
         $route = route('admin.post.update', $post->id);
         $method = 'PUT';
-        return view('admin.post.create&edit', compact(['post', 'route', 'method']));
+        return view('admin.post.create&edit', compact(['post', 'route', 'method', 'categoris']));
     }
 
     /**
