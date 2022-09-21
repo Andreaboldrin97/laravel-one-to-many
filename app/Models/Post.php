@@ -10,5 +10,5 @@ class Post extends Model
     {
         return $this->hasMany('App\User');
     }
-    protected $fillable = array('title', 'description', 'image_url', 'author', 'sale_date');
+    protected $fillable = array('title', 'description', 'image_url', 'user_id', 'sale_date');
 }

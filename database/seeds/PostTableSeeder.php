@@ -18,7 +18,7 @@ class PostTableSeeder extends Seeder
         $user = User::all();
         for ($i = 1; $i <= 20; $i++) {
             $newPost = new Post();
-            $newPost->user_id = $user->id;
+            $newPost->user_id = $faker->randomElement($user)->id;
             $newPost->title = $faker->realText(35);
             $newPost->description = $faker->paragraph(3, true);
             $newPost->image_url = $faker->imageUrl(350, 350, 'post');
